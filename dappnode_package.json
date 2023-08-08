@@ -1,34 +1,30 @@
 {
-  "name": "teku-prater.dnp.dappnode.eth",
-  "version": "0.1.17",
-  "upstreamVersion": "23.6.1",
+  "name": "teku-lukso.dnp.dappnode.eth",
+  "version": "0.1.0",
+  "upstreamVersion": "23.8.0",
   "architectures": ["linux/amd64"],
   "upstreamRepo": "ConsenSys/teku",
-  "shortDescription": "Teku Prater Beacon chain + validator",
-  "description": "Teku implementation of Prater Beacon chain + validator",
+  "shortDescription": "Teku LUKSO Beacon chain + validator",
+  "description": "Teku implementation of LUKSO Beacon chain + validator",
   "type": "service",
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
-  "contributors": [
-    "mgarciate <mgarciate@gmail.com> (https://github.com/mgarciate)",
-    "pablomendezroyo <mendez4a@gmail.com> (https://github.com/pablomendezroyo"
-  ],
   "categories": ["Blockchain", "ETH2.0"],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dappnode/DAppNodePackage-teku-prater.git"
+    "url": "git+https://github.com/dappnode/DAppNodePackage-teku-lukso.git"
   },
   "bugs": {
-    "url": "https://github.com/dappnode/DAppNodePackage-teku-prater/issues"
+    "url": "https://github.com/dappnode/DAppNodePackage-teku-lukso/issues"
   },
   "links": {
-    "ui": "http://brain.web3signer-prater.dappnode",
+    "ui": "http://brain.web3signer-lukso.dappnode",
     "homepage": "https://docs.teku.consensys.net",
     "readme": "https://github.com/ConsenSys/teku/blob/master/README.md",
     "docs": "https://docs.teku.consensys.net"
   },
   "license": "Apache-2.0",
   "requirements": {
-    "minimumDappnodeVersion": "0.2.58"
+    "minimumDappnodeVersion": "0.2.76"
   },
   "chain": {
     "driver": "ethereum-beacon-chain",
@@ -40,12 +36,8 @@
   },
   "globalEnvs": [
     {
-      "envs": ["EXECUTION_CLIENT_PRATER", "MEVBOOST_PRATER"],
+      "envs": ["EXECUTION_CLIENT_LUKSO"],
       "services": ["beacon-chain"]
-    },
-    {
-      "envs": ["MEVBOOST_PRATER"],
-      "services": ["validator"]
     }
   ]
 }

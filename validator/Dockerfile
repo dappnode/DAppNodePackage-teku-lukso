@@ -1,8 +1,5 @@
 ARG UPSTREAM_VERSION
 
-########
-# TEKU #
-########
 FROM consensys/teku:$UPSTREAM_VERSION
 
 USER root 
