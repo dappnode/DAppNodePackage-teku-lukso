@@ -2,7 +2,7 @@ version: "3.5"
 services:
   beacon-chain:
     build:
-      context: ./beacon-chain
+      context: beacon-chain
       args:
         BEACON_API_PORT: 3500
         UPSTREAM_VERSION: 23.8.0
@@ -23,7 +23,7 @@ services:
       - "seccomp:unconfined"
   validator:
     build:
-      context: ./validator
+      context: validator
       args:
         UPSTREAM_VERSION: 23.8.0
     environment:
@@ -31,8 +31,6 @@ services:
       BEACON_NODE_ADDR: "http://beacon-chain.teku-lukso.dappnode:3500"
       GRAFFITI: validating_from_DAppNode
       EXTRA_OPTS: ""
-      EXIT_VALIDATOR: ""
-      KEYSTORES_VOLUNTARY_EXIT: ""
       FEE_RECIPIENT_ADDRESS: ""
       JAVA_OPTS: "-Xmx6g"
     restart: unless-stopped

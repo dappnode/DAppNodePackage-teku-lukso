@@ -18,13 +18,12 @@
   },
   "links": {
     "ui": "http://brain.web3signer-lukso.dappnode",
-    "homepage": "https://docs.teku.consensys.net",
     "readme": "https://github.com/ConsenSys/teku/blob/master/README.md",
     "docs": "https://docs.teku.consensys.net"
   },
   "license": "Apache-2.0",
   "requirements": {
-    "minimumDappnodeVersion": "0.2.76"
+    "minimumDappnodeVersion": "0.2.77"
   },
   "chain": {
     "driver": "ethereum-beacon-chain",
@@ -32,7 +31,7 @@
     "portNumber": 3500
   },
   "warnings": {
-    "onRemove": "Make sure your web3signer does not have this client selected or you will stop validating! (Packages > web3signer > config > client)"
+    "onRemove": "Make sure your web3signer does not have this client selected or you will stop validating! You can check this in the Stakers tab."
   },
   "globalEnvs": [
     {
