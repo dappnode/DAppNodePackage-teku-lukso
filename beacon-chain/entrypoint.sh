@@ -22,6 +22,11 @@ case $_DAPPNODE_GLOBAL_EXECUTION_CLIENT_LUKSO in
     ;;
 esac
 
+# If FEE_RECIPIENT_ADDRESS is an eth address, set it
+if [[ $FEE_RECIPIENT_ADDRESS =~ ^0x[a-fA-F0-9]{40}$ ]]; then
+    EXTRA_OPTS="--validators-proposer-default-fee-recipient=$FEE_RECIPIENT_ADDRESS ${EXTRA_OPTS}"
+fi
+
 exec /opt/teku/bin/teku \
     --network=lukso \
     --data-base-path=/opt/teku/data \
@@ -39,5 +44,4 @@ exec /opt/teku/bin/teku \
     --metrics-port 8008 \
     --metrics-host-allowlist "*" \
     --log-destination=CONSOLE \
-    --validators-proposer-default-fee-recipient="${FEE_RECIPIENT_ADDRESS}" \
     $EXTRA_OPTS

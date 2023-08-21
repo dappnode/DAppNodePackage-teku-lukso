@@ -4,6 +4,11 @@ NETWORK="lukso"
 VALIDATOR_PORT=3500
 WEB3SIGNER_API="http://web3signer.web3signer-${NETWORK}.dappnode:9000"
 
+# If FEE_RECIPIENT_ADDRESS is an eth address, set it
+if [[ $FEE_RECIPIENT_ADDRESS =~ ^0x[a-fA-F0-9]{40}$ ]]; then
+  EXTRA_OPTS="--validators-proposer-default-fee-recipient=$FEE_RECIPIENT_ADDRESS ${EXTRA_OPTS}"
+fi
+
 # Teku must start with the current env due to JAVA_HOME var
 exec /opt/teku/bin/teku --log-destination=CONSOLE \
   validator-client \
@@ -22,6 +27,5 @@ exec /opt/teku/bin/teku --log-destination=CONSOLE \
   --validators-graffiti="${GRAFFITI:0:32}" \
   --validator-api-keystore-file=/cert/teku_client_keystore.p12 \
   --validator-api-keystore-password-file=/cert/teku_keystore_password.txt \
-  --validators-proposer-default-fee-recipient="${FEE_RECIPIENT_ADDRESS}" \
   --logging="${LOG_TYPE}" \
   ${EXTRA_OPTS}
