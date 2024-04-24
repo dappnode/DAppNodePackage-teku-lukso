@@ -5,38 +5,38 @@ services:
       context: beacon-chain
       args:
         BEACON_API_PORT: 3500
-        UPSTREAM_VERSION: 24.1.0
+        UPSTREAM_VERSION: 24.3.1
     environment:
       BEACON_API_PORT: 3500
-      CHECKPOINT_SYNC_URL: "https://checkpoints.mainnet.lukso.network"
+      CHECKPOINT_SYNC_URL: https://checkpoints.mainnet.lukso.network
       P2P_PORT: 9905
       FEE_RECIPIENT_ADDRESS: ""
       EXTRA_OPTS: ""
       JAVA_OPTS: "-Xmx6g"
     volumes:
-      - "teku-lukso-data:/opt/teku/data"
+      - teku-lukso-data:/opt/teku/data
     ports:
-      - "9905:9905/tcp"
-      - "9905:9905/udp"
+      - 9905:9905/tcp
+      - 9905:9905/udp
     restart: unless-stopped
     security_opt:
-      - "seccomp:unconfined"
-    image: "beacon-chain.teku-lukso.dnp.dappnode.eth:0.1.0"
+      - seccomp:unconfined
+    image: beacon-chain.teku-lukso.dnp.dappnode.eth:0.1.0
   validator:
     build:
       context: validator
       args:
-        UPSTREAM_VERSION: 24.1.0
+        UPSTREAM_VERSION: 24.3.1
     environment:
       LOG_TYPE: INFO
-      BEACON_NODE_ADDR: "http://beacon-chain.teku-lukso.dappnode:3500"
+      BEACON_NODE_ADDR: http://beacon-chain.teku-lukso.dappnode:3500
       GRAFFITI: validating_from_DAppNode
       EXTRA_OPTS: ""
       FEE_RECIPIENT_ADDRESS: ""
       JAVA_OPTS: "-Xmx6g"
     restart: unless-stopped
-    image: "validator.teku-lukso.dnp.dappnode.eth:0.1.0"
+    image: validator.teku-lukso.dnp.dappnode.eth:0.1.0
     security_opt:
-      - "seccomp:unconfined"
+      - seccomp:unconfined
 volumes:
   teku-lukso-data: {}
