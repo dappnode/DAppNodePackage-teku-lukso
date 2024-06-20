@@ -1,7 +1,7 @@
 {
   "name": "teku-lukso.dnp.dappnode.eth",
-  "version": "0.1.1",
-  "upstreamVersion": "24.4.0",
+  "version": "0.1.2",
+  "upstreamVersion": "24.6.0",
   "architectures": ["linux/amd64"],
   "upstreamRepo": "ConsenSys/teku",
   "shortDescription": "Teku LUKSO Beacon chain + validator",
